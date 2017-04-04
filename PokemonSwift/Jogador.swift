@@ -18,13 +18,24 @@ class Jogador: NSObject {
     var pokemons: Array<Pokemon> = []
     
     init(_ currentID: Int, _ currentNome: String,_ currentSex: String, _ firstPokemon: Pokemon) {
+        
+        super.init()
+        
         self.idJogador = currentID
         self.nome = currentNome
         self.sexo = currentSex
         self.pokemons.append(firstPokemon)
     }
     
-    // talvez
+    init(_ currentID: Int, _ currentNome: String,_ currentSex: String, _ currentPokemons: Array<Pokemon>) {
+        
+        super.init()
+        
+        self.idJogador = currentID
+        self.nome = currentNome
+        self.sexo = currentSex
+        self.pokemons = currentPokemons
+    }
     
     
     
