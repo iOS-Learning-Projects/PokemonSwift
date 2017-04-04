@@ -13,59 +13,64 @@ class Utils: NSObject {
     func lerEntradaDoUsuario() -> String{
         return lerEntradaDoUsuarioComMensagem(mensagem: nil)
     }
-    
-    func lerEntradaDoUsuarioComMensagem(mensagem: String?) -> String{
-        
-        if !(mensagem?.isEmpty){
-            print(mensagem)
+
+    func lerEntradaDoUsuarioComMensagem(mensagem: String?) -> String {
+
+        if let message = mensagem {
+            print(message)
         }
+
         let response = readLine()
         return response!
     }
     
     func lerEntradaDoUsuarioComInt() -> Int{
-        var output: CInt = 0
-        return getInput(&output)
+        return Int(lerEntradaDoUsuario())!
     }
     
-    func chooseFirstPokemon(pokemonsIniciais: NSArray) -> Pokemon{
+    func chooseFirstPokemon(pokemonsIniciais: [Pokemon]) -> Pokemon {
         var aux: Int
         var index: Int = 0
-        print("\nIr nessa jornada sozinho é muito perigoso. \nPor favor, leve um pokemon com voce\n")
-        for pokemon in pokemonsIniciais{
+
+        print("\nIr nessa jornada sozinho é muito perigoso. \nPor favor, leve um pokemon com voce")
+
+        for pokemon in pokemonsIniciais {
             index += 1
-            print("%d - %s\n", index, pokemon.name)
+            print("\(index) - \(pokemon.name)")
         }
-        
+
         print("\nEscolha o seu pokemon: ")
         //validaçao de escolha do pokemon.
-        repeat{
+        repeat {
             aux = lerEntradaDoUsuarioComInt()
-        }while(aux != 1 && aux != 2 && aux != 3)
-    
-        return pokemonsIniciais.object(at: aux-1) as! Pokemon
+        } while(aux != 1 && aux != 2 && aux != 3)
+
+        return pokemonsIniciais[aux - 1]
     }
     
-    func cadastrarJogador(pokemonsIniciais: NSArray) -> Jogador{
+    func cadastrarJogador(pokemonsIniciais: [Pokemon]) -> Jogador{
         var n: Int
         var sex: String
+
         print("Olá jovem treinador! Meu nome é Prof. Jabosa. Neste mundo existem criaturas chamadas pokemons e seu dever é capturá-las. Mas primeiro, me diga. Voce é um garoto ou uma garota?\n1 - Garoto\n2 - Garota\n")
-        repeat{
+
+        repeat {
             n = lerEntradaDoUsuarioComInt()
-        }while(n != 1 && n != 2)
-        
-        if n == 1{
+        } while(n != 1 && n != 2)
+
+        if n == 1 {
             sex = "Garoto"
         }
-        else{
+        else {
             sex = "Garota"
         }
-        let nomePlayer: String = lerEntradaDoUsuarioComMensagem(mensagem: "\nAgora me diga, qual o seu nome?\n")
+
+        let nomePlayer = lerEntradaDoUsuarioComMensagem(mensagem: "\nAgora me diga, qual o seu nome?\n")
         
-        let pokemon: Pokemon = chooseFirstPokemon(pokemonsIniciais: pokemonsIniciais)
+        let pokemon = chooseFirstPokemon(pokemonsIniciais: pokemonsIniciais)
         
         player = Jogador(Int(arc4random_uniform(100)), nomePlayer, sex, pokemon)
-        
+
         return player
     }
     
