@@ -34,7 +34,7 @@ class Utils: NSObject {
         print("\nIr nessa jornada sozinho é muito perigoso. \nPor favor, leve um pokemon com voce\n")
         for pokemon in pokemonsIniciais{
             index += 1
-            print("%d - %s\n", index, pokemon.nome)
+            print("%d - %s\n", index, pokemon.name)
         }
         
         print("\nEscolha o seu pokemon: ")
@@ -60,11 +60,11 @@ class Utils: NSObject {
         else{
             sex = "Garota"
         }
-        var nomePlayer: String = lerEntradaDoUsuarioComMensagem(mensagem: "\nAgora me diga, qual o seu nome?\n")
+        let nomePlayer: String = lerEntradaDoUsuarioComMensagem(mensagem: "\nAgora me diga, qual o seu nome?\n")
         
-        var pokemon: Pokemon = chooseFirstPokemon(pokemonsIniciais: pokemonsIniciais)
+        let pokemon: Pokemon = chooseFirstPokemon(pokemonsIniciais: pokemonsIniciais)
         
-        player = Jogador(arc4random_uniform(100), nomePlayer, sex, pokemon)
+        player = Jogador(Int(arc4random_uniform(100)), nomePlayer, sex, pokemon)
         
         return player
     }

@@ -41,21 +41,17 @@ class PokeMundo: NSObject {
         iniciais.add(paras)
         iniciais.add(exeggcute)
         
-        var pokemonsBrock: NSMutableArray
-        pokemonsBrock.addObjects(from: [bulbasaur, paras, exeggcute])
-        var brock = Jogador(101, "Brock", "garoto", pokemonsBrock)
+        var pokemonsBrock = NSArray(array: [bulbasaur, paras, exeggcute])
+        var brock = Jogador(101, "Brock", "garoto", pokemonsBrock as! Array<Pokemon>)
         
-        var pokemonsMisty: NSMutableArray
-        pokemonsMisty.addObjects(from: [growlithe, magmar, chikorita])
-        var misty = Jogador(102, "Misty", "garota", pokemonsMisty)
+        var pokemonsMisty = NSArray(array: [growlithe, magmar, chikorita])
+        var misty = Jogador(102, "Misty", "garota", pokemonsMisty as! Array<Pokemon>)
         
-        var pokemonsLtSurge: NSMutableArray
-        pokemonsLtSurge.addObjects(from: [bulbasaur, paras, exeggcute])
-        var ltSurge = Jogador(103, "LtSurge", "garoto", pokemonsLtSurge)
+        var pokemonsLtSurge = NSArray(array: [bulbasaur, paras, exeggcute])
+        var ltSurge = Jogador(103, "LtSurge", "garoto", pokemonsLtSurge as! Array<Pokemon>)
         
-        var pokemonsErika: NSMutableArray
-        pokemonsErika.addObjects(from: [ponyta, horsea, charmander])
-        var erika = Jogador(104, "Erika", "garota", pokemonsErika)
+        var pokemonsErika = NSArray(array: [ponyta, horsea, charmander])
+        var erika = Jogador(104, "Erika", "garota", pokemonsErika as! Array<Pokemon>)
         
         var ginasios: NSMutableArray
         //var pewter = Ginasio(
@@ -75,7 +71,7 @@ class PokeMundo: NSObject {
         print("Nome do Ginasio\t    Lider do Ginásio\n")
         print("---------------------------------------\n")
         for ginasio in self.ginasios!{
-            print("%-17s\t%-20s\n", ginasio.nome, ginasio.lider.nome)
+            print("%-17s\t%-20s\n", ginasio.name, ginasio.lider.nome)
         }
     }
 }
@@ -97,15 +93,4 @@ class PokeMundo: NSObject {
 //    self.pokemons = iniciais;
 //    self.ginasios = ginasios;
 //    
-//}
-//
-//-(void)showGinasions {
-//    printf("Nome do Ginasio\t    Lider do Ginásio\n");
-//    printf("---------------------------------------\n");
-//    
-//    for (Ginasio *ginasio in self.ginasios) {
-//        printf("%-17s\t%-20s\n", [[ginasio nome] UTF8String], [[[ginasio lider] nome] UTF8String]);
-//    }
-//}
-//
-//@end
+
