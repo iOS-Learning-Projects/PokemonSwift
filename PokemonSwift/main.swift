@@ -14,7 +14,7 @@ let pokeMundo: PokeMundo
 pokeMundo.iniciarMundo  // Falta o Método
 
 
-var pokemonsIniciais: Array<Any>
+var pokemonsIniciais: Array<Pokemon>
 
 
 for i in 0...3{
