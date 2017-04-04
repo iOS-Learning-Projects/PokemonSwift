@@ -58,10 +58,10 @@ class PokeMundo: NSObject {
         var erika = Jogador(104, "Erika", "garota", pokemonsErika)
         
         var ginasios: NSMutableArray
-        var pewter = Ginasio(
-        var cerulean = Ginasio(
-        var vermilion = Ginasio(
-        var celadon = Ginasio(
+        //var pewter = Ginasio(
+        //var cerulean = Ginasio(
+        //var vermilion = Ginasio(
+        //var celadon = Ginasio(
         
         ginasios.addObjects(from: [pewter, cerulean, vermilion, celadon])
             

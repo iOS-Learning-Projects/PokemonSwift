@@ -63,12 +63,8 @@ class Utils: NSObject {
         var nomePlayer: String = lerEntradaDoUsuarioComMensagem(mensagem: "\nAgora me diga, qual o seu nome?\n")
         
         var pokemon: Pokemon = chooseFirstPokemon(pokemonsIniciais: pokemonsIniciais)
-        pokemon.setLevel = 3
-        pokemon.setExp = 0
         
-        player = Jogador()
-        //    Jogador *player = [[Jogador alloc]initWithID:arc4random_uniform(100) andNome:nomePlayer andSexo:sex andPokemon: pokemon];
-
+        player = Jogador(arc4random_uniform(100), nomePlayer, sex, pokemon)
         
         return player
     }
