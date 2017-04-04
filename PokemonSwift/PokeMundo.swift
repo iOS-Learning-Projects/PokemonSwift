@@ -13,74 +13,77 @@ class PokeMundo: NSObject {
     var ginasios: NSMutableArray?
     var pokemons: NSMutableArray?
     
-    init(currentGinasios: NSMutableArray, currentPokemons: NSMutableArray) {
-        super.init()
-        self.ginasios = currentGinasios
-        self.pokemons = currentPokemons
-    }
-    
     func iniciarMundo(){
         var iniciais: NSMutableArray
-        var bulbasaur: Pokemon
+        var bulbasaur = Pokemon("Charmander", ofType: "GRAMA")
+        var charmander = Pokemon("Charmander", ofType: "FOGO")
+        var squirtle = Pokemon("Squirtle", ofType: "AGUA")
+        var poliwag = Pokemon("Poliwag", ofType: "AGUA")
+        var horsea = Pokemon("Horsea", ofType: "AGUA")
+        var staryu = Pokemon("Staryu", ofType: "AGUA")
+        var growlithe = Pokemon("Growlithe", ofType: "FOGO")
+        var ponyta = Pokemon("Ponyta", ofType: "FOGO")
+        var magmar = Pokemon("Magmar", ofType: "FOGO")
+        var chikorita = Pokemon("Chikorita", ofType: "GRAMA")
+        var paras = Pokemon("Paras", ofType: "GRAMA")
+        var exeggcute = Pokemon("Exeggcute", ofType: "GRAMA")
+        
+        iniciais.add(bulbasaur)
+        iniciais.add(charmander)
+        iniciais.add(squirtle)
+        iniciais.add(poliwag)
+        iniciais.add(horsea)
+        iniciais.add(staryu)
+        iniciais.add(growlithe)
+        iniciais.add(ponyta)
+        iniciais.add(magmar)
+        iniciais.add(chikorita)
+        iniciais.add(paras)
+        iniciais.add(exeggcute)
+        
+        var pokemonsBrock: NSMutableArray
+        pokemonsBrock.addObjects(from: [bulbasaur, paras, exeggcute])
+        var brock = Jogador(101, "Brock", "garoto", pokemonsBrock)
+        
+        var pokemonsMisty: NSMutableArray
+        pokemonsMisty.addObjects(from: [growlithe, magmar, chikorita])
+        var misty = Jogador(102, "Misty", "garota", pokemonsMisty)
+        
+        var pokemonsLtSurge: NSMutableArray
+        pokemonsLtSurge.addObjects(from: [bulbasaur, paras, exeggcute])
+        var ltSurge = Jogador(103, "LtSurge", "garoto", pokemonsLtSurge)
+        
+        var pokemonsErika: NSMutableArray
+        pokemonsErika.addObjects(from: [ponyta, horsea, charmander])
+        var erika = Jogador(104, "Erika", "garota", pokemonsErika)
+        
+        var ginasios: NSMutableArray
+        var pewter = Ginasio(
+        var cerulean = Ginasio(
+        var vermilion = Ginasio(
+        var celadon = Ginasio(
+        
+        ginasios.addObjects(from: [pewter, cerulean, vermilion, celadon])
+            
+        self.pokemons = iniciais
+        self.ginasios = ginasios
         
         
+    }
+    
+    func showGinasios(){
+        print("Nome do Ginasio\t    Lider do Ginásio\n")
+        print("---------------------------------------\n")
+        for ginasio in self.ginasios!{
+            print("%-17s\t%-20s\n", ginasio.nome, ginasio.lider.nome)
+        }
     }
 }
 
 
 //
 //-(void)iniciarMundo{
-//    NSMutableArray *iniciais = [[NSMutableArray alloc]init];
-//    Pokemon *bulbasaur = [[Pokemon alloc]initWithNome:@"Bulbasaur" andTipo:@"GRAMA"];
-//    Pokemon *charmander = [[Pokemon alloc]initWithNome:@"Charmander" andTipo:@"FOGO"];
-//    Pokemon *squirtle = [[Pokemon alloc]initWithNome:@"Squirtle" andTipo:@"AGUA"];
-//    Pokemon *poliwag = [[Pokemon alloc]initWithNome:@"Poliwag" andTipo:@"AGUA"];
-//    Pokemon *horsea = [[Pokemon alloc]initWithNome:@"Horsea" andTipo:@"AGUA"];
-//    Pokemon *staryu = [[Pokemon alloc]initWithNome:@"Staryu" andTipo:@"AGUA"];
-//    Pokemon *growlithe = [[Pokemon alloc]initWithNome:@"Growlithe" andTipo:@"FOGO"];
-//    Pokemon *ponyta = [[Pokemon alloc]initWithNome:@"Ponyta" andTipo:@"FOGO"];
-//    Pokemon *magmar = [[Pokemon alloc]initWithNome:@"Magmar" andTipo:@"FOGO"];
-//    Pokemon *chikorita = [[Pokemon alloc]initWithNome:@"Chikorita" andTipo:@"GRAMA"];
-//    Pokemon *paras = [[Pokemon alloc]initWithNome:@"Paras" andTipo:@"GRAMA"];
-//    Pokemon *exeggcute = [[Pokemon alloc]initWithNome:@"Exeggcute" andTipo:@"GRAMA"];
-//    
-//    [iniciais addObject: bulbasaur];
-//    [iniciais addObject: charmander];
-//    [iniciais addObject: squirtle];
-//    [iniciais addObject: poliwag];
-//    [iniciais addObject: horsea];
-//    [iniciais addObject: staryu];
-//    [iniciais addObject: growlithe];
-//    [iniciais addObject: ponyta];
-//    [iniciais addObject: magmar];
-//    [iniciais addObject: chikorita];
-//    [iniciais addObject: paras];
-//    [iniciais addObject: exeggcute];
-//    
-//    NSMutableArray *pokemonsBrock = [[NSMutableArray alloc]init];
-//    [pokemonsBrock addObject:[[Pokemon alloc]initWithNome:@"Bulbasaur" andTipo:@"GRAMA"]];
-//    [pokemonsBrock addObject:[[Pokemon alloc]initWithNome:@"Paras" andTipo:@"GRAMA"]];
-//    [pokemonsBrock addObject:[[Pokemon alloc]initWithNome:@"Exeggcute" andTipo:@"GRAMA"]];
-//    Jogador *brock = [[Jogador alloc]initWithID:101 andNome:@"Brock" andSexo:@"garoto" andPokemons:pokemonsBrock];
-//    
-//    NSMutableArray *pokemonsMisty = [[NSMutableArray alloc]init];
-//    [pokemonsMisty addObject:[[Pokemon alloc]initWithNome:@"Squirtle" andTipo:@"AGUA"]];
-//    [pokemonsMisty addObject:[[Pokemon alloc]initWithNome:@"Poliwag" andTipo:@"AGUA"]];
-//    [pokemonsMisty addObject:[[Pokemon alloc]initWithNome:@"Staryu" andTipo:@"AGUA"]];
-//    Jogador *misty = [[Jogador alloc]initWithID:101 andNome:@"Misty" andSexo:@"garota" andPokemons:pokemonsMisty];
-//    
-//    NSMutableArray *pokemonsLtSurge = [[NSMutableArray alloc]init];
-//    [pokemonsLtSurge addObject:[[Pokemon alloc]initWithNome:@"Growlithe" andTipo:@"FOGO"]];
-//    [pokemonsLtSurge addObject:[[Pokemon alloc]initWithNome:@"Magmar" andTipo:@"FOGO"]];
-//    [pokemonsLtSurge addObject:[[Pokemon alloc]initWithNome:@"Chikorita" andTipo:@"GRAMA"]];
-//    Jogador *ltSurge = [[Jogador alloc]initWithID:101 andNome:@"LtSurge" andSexo:@"garoto" andPokemons:pokemonsLtSurge];
-//    
-//    NSMutableArray *pokemonsErika = [[NSMutableArray alloc]init];
-//    [pokemonsErika addObject:[[Pokemon alloc]initWithNome:@"Ponyta" andTipo:@"FOGO"]];
-//    [pokemonsErika addObject:[[Pokemon alloc]initWithNome:@"Horsea" andTipo:@"AGUA"]];
-//    [pokemonsErika addObject:[[Pokemon alloc]initWithNome:@"Charmander" andTipo:@"FOGO"]];
-//    Jogador *erika = [[Jogador alloc]initWithID:101 andNome:@"Erika" andSexo:@"garota" andPokemons:pokemonsErika];
-//    
+//
 //    NSMutableArray *ginasios = [[NSMutableArray alloc]init];
 //    Ginasio *pewter = [[Ginasio alloc]initWithNome:@"Pewter" andLider:brock];
 //    Ginasio *cerulean = [[Ginasio alloc]initWithNome:@"Cerulean" andLider:misty];
