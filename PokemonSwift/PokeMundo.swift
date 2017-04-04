@@ -9,57 +9,48 @@
 import Cocoa
 
 class PokeMundo: NSObject {
-    var jogadores: NSMutableArray?
-    var ginasios: NSMutableArray?
-    var pokemons: NSMutableArray?
+    var jogadores: NSArray?
+    var ginasios: NSArray?
+    var pokemons: NSArray?
     
     func iniciarMundo(){
-        var iniciais: NSMutableArray
-        var bulbasaur = Pokemon("Charmander", ofType: "GRAMA")
-        var charmander = Pokemon("Charmander", ofType: "FOGO")
-        var squirtle = Pokemon("Squirtle", ofType: "AGUA")
-        var poliwag = Pokemon("Poliwag", ofType: "AGUA")
-        var horsea = Pokemon("Horsea", ofType: "AGUA")
-        var staryu = Pokemon("Staryu", ofType: "AGUA")
-        var growlithe = Pokemon("Growlithe", ofType: "FOGO")
-        var ponyta = Pokemon("Ponyta", ofType: "FOGO")
-        var magmar = Pokemon("Magmar", ofType: "FOGO")
-        var chikorita = Pokemon("Chikorita", ofType: "GRAMA")
-        var paras = Pokemon("Paras", ofType: "GRAMA")
-        var exeggcute = Pokemon("Exeggcute", ofType: "GRAMA")
+        // Pokemons existentes
+        let bulbasaur = Pokemon("Charmander", ofType: "GRAMA")
+        let charmander = Pokemon("Charmander", ofType: "FOGO")
+        let squirtle = Pokemon("Squirtle", ofType: "AGUA")
+        let poliwag = Pokemon("Poliwag", ofType: "AGUA")
+        let horsea = Pokemon("Horsea", ofType: "AGUA")
+        let staryu = Pokemon("Staryu", ofType: "AGUA")
+        let growlithe = Pokemon("Growlithe", ofType: "FOGO")
+        let ponyta = Pokemon("Ponyta", ofType: "FOGO")
+        let magmar = Pokemon("Magmar", ofType: "FOGO")
+        let chikorita = Pokemon("Chikorita", ofType: "GRAMA")
+        let paras = Pokemon("Paras", ofType: "GRAMA")
+        let exeggcute = Pokemon("Exeggcute", ofType: "GRAMA")
         
-        iniciais.add(bulbasaur)
-        iniciais.add(charmander)
-        iniciais.add(squirtle)
-        iniciais.add(poliwag)
-        iniciais.add(horsea)
-        iniciais.add(staryu)
-        iniciais.add(growlithe)
-        iniciais.add(ponyta)
-        iniciais.add(magmar)
-        iniciais.add(chikorita)
-        iniciais.add(paras)
-        iniciais.add(exeggcute)
         
-        var pokemonsBrock = NSArray(array: [bulbasaur, paras, exeggcute])
-        var brock = Jogador(101, "Brock", "garoto", pokemonsBrock as! Array<Pokemon>)
+        let iniciais = NSArray(array: [bulbasaur, charmander, squirtle, poliwag, horsea, staryu, growlithe, ponyta, magmar, chikorita, paras, exeggcute])
         
-        var pokemonsMisty = NSArray(array: [growlithe, magmar, chikorita])
-        var misty = Jogador(102, "Misty", "garota", pokemonsMisty as! Array<Pokemon>)
+        // Lideres
+        let pokemonsBrock = NSArray(array: [bulbasaur, paras, exeggcute])
+        let brock = Jogador(101, "Brock", "garoto", pokemonsBrock as! Array<Pokemon>)
         
-        var pokemonsLtSurge = NSArray(array: [bulbasaur, paras, exeggcute])
-        var ltSurge = Jogador(103, "LtSurge", "garoto", pokemonsLtSurge as! Array<Pokemon>)
+        let pokemonsMisty = NSArray(array: [growlithe, magmar, chikorita])
+        let misty = Jogador(102, "Misty", "garota", pokemonsMisty as! Array<Pokemon>)
         
-        var pokemonsErika = NSArray(array: [ponyta, horsea, charmander])
-        var erika = Jogador(104, "Erika", "garota", pokemonsErika as! Array<Pokemon>)
+        let pokemonsLtSurge = NSArray(array: [bulbasaur, paras, exeggcute])
+        let ltSurge = Jogador(103, "LtSurge", "garoto", pokemonsLtSurge as! Array<Pokemon>)
         
-        var ginasios: NSMutableArray
-        //var pewter = Ginasio(
-        //var cerulean = Ginasio(
-        //var vermilion = Ginasio(
-        //var celadon = Ginasio(
+        let pokemonsErika = NSArray(array: [ponyta, horsea, charmander])
+        let erika = Jogador(104, "Erika", "garota", pokemonsErika as! Array<Pokemon>)
         
-        ginasios.addObjects(from: [pewter, cerulean, vermilion, celadon])
+        // Ginasios
+        let pewter = Gym(gymOfName: "Pewter", ledBy: brock)
+        let cerulean = Gym(gymOfName: "Cerulean", ledBy: misty)
+        let vermilion = Gym(gymOfName: "Vermilion", ledBy: ltSurge)
+        let celadon = Gym(gymOfName: "Celadon", ledBy: erika)
+        
+        let ginasios = NSArray(array: [pewter, cerulean, vermilion, celadon])
             
         self.pokemons = iniciais
         self.ginasios = ginasios
@@ -71,26 +62,7 @@ class PokeMundo: NSObject {
         print("Nome do Ginasio\t    Lider do Ginásio\n")
         print("---------------------------------------\n")
         for ginasio in self.ginasios!{
-            print("%-17s\t%-20s\n", ginasio.name, ginasio.lider.nome)
+            print("%-17s\t%-20s\n", (ginasio as! Gym).name, (ginasio as! Gym).leader.nome)
         }
     }
 }
-
-
-//
-//-(void)iniciarMundo{
-//
-//    NSMutableArray *ginasios = [[NSMutableArray alloc]init];
-//    Ginasio *pewter = [[Ginasio alloc]initWithNome:@"Pewter" andLider:brock];
-//    Ginasio *cerulean = [[Ginasio alloc]initWithNome:@"Cerulean" andLider:misty];
-//    Ginasio *vermilion = [[Ginasio alloc]initWithNome:@"Vermilion" andLider:ltSurge];
-//    Ginasio *celadon = [[Ginasio alloc]initWithNome:@"Celadon" andLider:erika];
-//    [ginasios addObject: pewter];
-//    [ginasios addObject: cerulean];
-//    [ginasios addObject: vermilion];
-//    [ginasios addObject: celadon];
-//    
-//    self.pokemons = iniciais;
-//    self.ginasios = ginasios;
-//    
-
