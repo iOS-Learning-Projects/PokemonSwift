@@ -61,4 +61,37 @@ class PokeMundo: NSObject {
             print("%-17s\t%-20s\n", ginasio.name, ginasio.leader.nome)
         }
     }
+    
+    func desafiarGinasioWithDesafiante(desafiante: Jogador){
+        if desafiante.pokemons.count < 3{
+            print("\nVocê precisa ter ao menos 3 pokemons para realizar um desafio.\n")
+            return
+        }
+        print("\nEscolha o ginásio que deseja desafiar:\n")
+        self.showGinasios()
+        
+        var option: Int
+        repeat{
+            option = Utils.lerEntradaDoUsuarioComInt() - 1
+        } while (option < 0 && option > 3)
+        
+        self.ginasios?[option].challengedBy(player: desafiante)
+    }
+    
+//    -(void)desafiarGinasioWithDesafiante:(Jogador *)desafiante {
+//    if ([[desafiante pokemons]count] < 3) {
+//    printf("\nVocê precisa ter ao menos 3 pokemons para realizar um desafio.\n");
+//    return;
+//    }
+//    printf("\nEscolha o ginásio que deseja desafiar:\n");
+//    [self showGinasions];
+//    
+//    int option;
+//    do {
+//    option = [Utils lerEntradaDoUsuarioComInt] - 1;
+//    } while (option < 0 && option > 3);
+//    
+//    [_ginasios[option] desafiarLiderWithDesafiante:desafiante];
+//    }
+
 }
