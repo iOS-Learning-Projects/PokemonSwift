@@ -68,7 +68,7 @@ class Jogador: NSObject {
         }
         print("Deseja tentar capturá-lo?\n1 - Sim\n2 - Nao");
         repeat {
-            op = Utils.lerEntradaDoUsuarioComInt;
+            op = Utils.lerEntradaDoUsuarioComInt()
         } while op != 1 && op != 2 ;
         
         
