@@ -57,7 +57,7 @@ struct Gym {
         let pokemonOfChallengerWon = true
         let pokemonOfChallengerLost = false
 
-        let differenceBetweenLevelOfPokemons = Int(pokemonOfChallenger.level - pokemonOfGymLeader.level)
+        let differenceBetweenLevelOfPokemons = (pokemonOfChallenger.level - pokemonOfGymLeader.level)
 
         if (differenceBetweenLevelOfPokemons >= 3) {
             return pokemonOfChallengerWon

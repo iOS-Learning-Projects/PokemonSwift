@@ -12,10 +12,10 @@ struct Pokemon {
 
     var name: String;
     var type: String;
-    var experience: UInt32 = 0;
-    var level = arc4random_uniform(10) + 2
+    var experience: Int = 0;
+    var level: Int = Int(arc4random_uniform(10) + 2)
 
-    init(_ name: String, ofType type: String, withExperience experience: UInt32, andLevel level: UInt32) {
+    init(_ name: String, ofType type: String, withExperience experience: Int, andLevel level: Int) {
         self.name = name
         self.type = type
         self.experience = experience
@@ -27,7 +27,7 @@ struct Pokemon {
         self.type = type
     }
 
-    mutating func gainExperience(_ experienceGained: UInt32) {
+    mutating func gainExperience(_ experienceGained: Int) {
         self.experience += experienceGained;
 
         if (self.experience >= 100) {

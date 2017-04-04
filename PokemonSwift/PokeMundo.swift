@@ -8,12 +8,11 @@
 
 import Cocoa
 
-class PokeMundo: NSObject {
-    var jogadores: Array<Jogador>?
-    var ginasios: Array<Gym>?
-    var pokemons: Array<Pokemon>?
+struct PokeMundo {
+    var ginasios: Array<Gym>
+    var pokemons: Array<Pokemon>
     
-    func iniciarMundo(){
+    init(){
         // Pokemons existentes
         let bulbasaur = Pokemon("Bulbasaur", ofType: "GRAMA")
         let charmander = Pokemon("Charmander", ofType: "FOGO")
@@ -28,7 +27,7 @@ class PokeMundo: NSObject {
         let paras = Pokemon("Paras", ofType: "GRAMA")
         let exeggcute = Pokemon("Exeggcute", ofType: "GRAMA")
         
-        self.pokemons?.append(contentsOf: [bulbasaur, charmander, squirtle, poliwag, horsea, staryu, growlithe, ponyta, magmar, chikorita, paras, exeggcute])
+        self.pokemons = [bulbasaur, charmander, squirtle, poliwag, horsea, staryu, growlithe, ponyta, magmar, chikorita, paras, exeggcute]
         
         // Lideres
         let pokemonsBrock = NSArray(array: [bulbasaur, paras, exeggcute])
@@ -49,20 +48,28 @@ class PokeMundo: NSObject {
         let vermilion = Gym(gymOfName: "Vermilion", ledBy: ltSurge)
         let celadon = Gym(gymOfName: "Celadon", ledBy: erika)
 
-        self.ginasios?.append(contentsOf: [pewter, cerulean, vermilion, celadon])
-        
-        
+        self.ginasios = [pewter, cerulean, vermilion, celadon]
+    }
+
+    func pokemonsIniciais() -> [Pokemon]{
+        return [
+            Pokemon("Bulbasaur", ofType: "GRAMA"),
+            Pokemon("Charmander", ofType: "FOGO"),
+            Pokemon("Squirtle", ofType: "AGUA")
+        ]
     }
     
     func showGinasios(){
-        print("Nome do Ginasio\t    Lider do Ginásio\n")
-        print("---------------------------------------\n")
-        for ginasio in self.ginasios!{
-            print("%-17s\t%-20s\n", ginasio.name, ginasio.leader.nome)
+        print("#   Nome do Ginasio\t    Lider do Ginásio")
+        print("---------------------------------------")
+        var i = 1
+        for ginasio in self.ginasios{
+            print("\(i)  \(ginasio.name)    \(ginasio.leader.nome)")
+            i += 1
         }
     }
     
-    func desafiarGinasioWithDesafiante(desafiante: Jogador){
+    mutating func desafiarGinasioWithDesafiante(desafiante: Jogador){
         if desafiante.pokemons.count < 3{
             print("\nVocê precisa ter ao menos 3 pokemons para realizar um desafio.\n")
             return
@@ -75,23 +82,7 @@ class PokeMundo: NSObject {
             option = Utils.lerEntradaDoUsuarioComInt() - 1
         } while (option < 0 && option > 3)
         
-        self.ginasios?[option].challengedBy(player: desafiante)
+        self.ginasios[option].challengedBy(player: desafiante)
     }
-    
-//    -(void)desafiarGinasioWithDesafiante:(Jogador *)desafiante {
-//    if ([[desafiante pokemons]count] < 3) {
-//    printf("\nVocê precisa ter ao menos 3 pokemons para realizar um desafio.\n");
-//    return;
-//    }
-//    printf("\nEscolha o ginásio que deseja desafiar:\n");
-//    [self showGinasions];
-//    
-//    int option;
-//    do {
-//    option = [Utils lerEntradaDoUsuarioComInt] - 1;
-//    } while (option < 0 && option > 3);
-//    
-//    [_ginasios[option] desafiarLiderWithDesafiante:desafiante];
-//    }
 
 }

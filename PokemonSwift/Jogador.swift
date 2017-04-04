@@ -48,24 +48,16 @@ class Jogador: NSObject {
         var op: Int
         
         var pokemon: Pokemon
+
+        let randomNumber = Int(arc4random_uniform(UInt32(listaPokemons.count)))
+        pokemon = listaPokemons[randomNumber]
+        pokemon.experience  = Int(arc4random_uniform(99))
+        pokemon.level = Int(arc4random_uniform(15))
         
-        pokemon = listaPokemons[Int(arc4random_uniform(UInt32(listaPokemons.count)))]
-        pokemon.experience  = arc4random_uniform(99)
-        
-        repeat{
-            pokemon.level = arc4random_uniform(15)
-        }while pokemon.level == 0
-        
-        print("Voce encontrou um %s.",pokemon.name);
-        print("\n%-20.20s%-20.20s%-20.20s%-20.20s\n","Nome", "Tipo", "Lvl", "Exp");
-        print("----------------------------------------------------------------\n");
-        
-        for pokemon in self.pokemons{
-            
-            
-            
-            print("%-20.20s%-20.20s %-20d %-20d\n", pokemon.name, pokemon.type, pokemon.level, pokemon.experience);
-        }
+        print("Voce encontrou um \(pokemon.name)");
+        print("Nome Tipo Lvl Exp");
+        print("----------------------------------------------------------------");
+        print("\(pokemon.name)   \(pokemon.type)   \(pokemon.level)   \(pokemon.experience)/n");
         print("Deseja tentar capturá-lo?\n1 - Sim\n2 - Nao");
         repeat {
             op = Utils.lerEntradaDoUsuarioComInt()
@@ -98,14 +90,14 @@ class Jogador: NSObject {
     
     func informacoesJogador(){
         
-        print("\n%-20.20s%-20.20s%-20.20s\n","ID", "Nome", "Sexo");
-        print("----------------------------------------------------------------\n");
-        print("%-20d%-20.20s%-20.20s\n", self.idJogador, self.nome, self.sexo);
+        print("ID   Nome   Sexo");
+        print("----------------------------------------------------------------");
+        print("\(self.idJogador)   \(self.nome)    \(self.sexo)");
         print("\nLista de Pokemons:\n");
-        print("\n%-20.20s%-20.20s%-20.20s%-20.20s\n","Nome", "Tipo", "Lvl", "Exp");
-        print("----------------------------------------------------------------\n");
+        print("Nome  Tipo   Lvl   Exp");
+        print("----------------------------------------------------------------");
         for pokemon in self.pokemons{
-            print("%-20.20s%-20.20s %-20d %-20d\n", pokemon.name, pokemon.type, pokemon.level, pokemon.experience);
+            print("\(pokemon.name)   \(pokemon.type)    \(pokemon.level)    \(pokemon.experience)");
         }
         
     }

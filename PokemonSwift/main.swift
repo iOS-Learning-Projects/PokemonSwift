@@ -9,20 +9,11 @@
 import Foundation
 
 
-let pokeMundo: PokeMundo
+var pokeMundo = PokeMundo()
 
-pokeMundo.iniciarMundo()  // Falta o Método
+let pokemonsIniciais = pokeMundo.pokemonsIniciais()
 
-
-var pokemonsIniciais: Array<Pokemon>
-
-
-for i in 0...3{
-    
-    pokemonsIniciais.append((pokeMundo.pokemons?[i])!)
-}
-
-var player: Jogador = Utils.cadastrarJogador(pokemonsIniciais: pokemonsIniciais) // Falta Utils
+var player: Jogador = Utils.cadastrarJogador(pokemonsIniciais: pokemonsIniciais)
 
 var option: Int
 
@@ -34,30 +25,20 @@ while(true){
     switch(option){
         
     case 1:
-        player.informacoesJogador() //Falta Metodo
-        break
-        
+        player.informacoesJogador()
     case 2:
-        pokeMundo.showGinasios() //Falta Metodo
-        break
-        
+        pokeMundo.showGinasios()
     case 3:
-        pokeMundo.desafiarGinasioWithDesafiante(player) //Falta Metodo
-        break
-        
+        pokeMundo.desafiarGinasioWithDesafiante(desafiante: player)
     case 4:
-        if let newPokemon = player.procurarPokemons(pokeMundo.pokemons!) {                                     //Falta Metodo
-            print("Parabens, você capturou um \(newPokemon.name)")  //Falta Metodo
-            player.addPokemon(newPokemon)                  //Falta Metodo
+        if let newPokemon = player.procurarPokemons(pokeMundo.pokemons) {
+            print("Parabens, você capturou um \(newPokemon.name)")
+            player.addPokemon(newPokemon)
         }else{
             print("Falha na captura")
         }
-        break
-        
     default:
-        break
-        
-        
+        exit(0)
     }
     
     

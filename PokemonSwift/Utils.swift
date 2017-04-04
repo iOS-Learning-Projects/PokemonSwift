@@ -25,7 +25,9 @@ class Utils: NSObject {
     }
     
     static func lerEntradaDoUsuarioComInt() -> Int{
-        return Int(lerEntradaDoUsuario())!
+        let input = lerEntradaDoUsuario()
+
+        return Int(input)!
     }
     
     static func chooseFirstPokemon(pokemonsIniciais: [Pokemon]) -> Pokemon {
