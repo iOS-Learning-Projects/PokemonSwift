@@ -10,11 +10,11 @@ import Cocoa
 
 class Utils: NSObject {
     
-    func lerEntradaDoUsuario() -> String{
+    static func lerEntradaDoUsuario() -> String{
         return lerEntradaDoUsuarioComMensagem(mensagem: nil)
     }
 
-    func lerEntradaDoUsuarioComMensagem(mensagem: String?) -> String {
+    static func lerEntradaDoUsuarioComMensagem(mensagem: String?) -> String {
 
         if let message = mensagem {
             print(message)
@@ -24,11 +24,11 @@ class Utils: NSObject {
         return response!
     }
     
-    func lerEntradaDoUsuarioComInt() -> Int{
+    static func lerEntradaDoUsuarioComInt() -> Int{
         return Int(lerEntradaDoUsuario())!
     }
     
-    func chooseFirstPokemon(pokemonsIniciais: [Pokemon]) -> Pokemon {
+    static func chooseFirstPokemon(pokemonsIniciais: [Pokemon]) -> Pokemon {
         var aux: Int
         var index: Int = 0
 
@@ -42,13 +42,13 @@ class Utils: NSObject {
         print("\nEscolha o seu pokemon: ")
         //validaçao de escolha do pokemon.
         repeat {
-            aux = lerEntradaDoUsuarioComInt()
+            aux = self.lerEntradaDoUsuarioComInt()
         } while(aux != 1 && aux != 2 && aux != 3)
 
         return pokemonsIniciais[aux - 1]
     }
     
-    func cadastrarJogador(pokemonsIniciais: [Pokemon]) -> Jogador{
+    static func cadastrarJogador(pokemonsIniciais: [Pokemon]) -> Jogador{
         var n: Int
         var sex: String
 
@@ -74,7 +74,7 @@ class Utils: NSObject {
         return player
     }
     
-    func showMenu(){
+    static func showMenu(){
             print("\nEscolha uma Opçao: \n1 - Mostrar minhas informações \n2 - Mostrar ginásios \n3 - Desafiar lider de ginásio \n4 - Procurar Pokemon \n0 - Sair do Jogo\n")
     }
 }

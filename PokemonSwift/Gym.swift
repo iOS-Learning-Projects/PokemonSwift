@@ -13,10 +13,6 @@ struct Gym {
     var name: String
     var leader: Jogador
 
-    init(gymOfName name: String) {
-        self.name = name
-    }
-
     init(gymOfName name: String, ledBy leader: Jogador) {
         self.name = name
         self.leader = leader
@@ -61,7 +57,7 @@ struct Gym {
         let pokemonOfChallengerWon = true
         let pokemonOfChallengerLost = false
 
-        let differenceBetweenLevelOfPokemons = pokemonOfChallenger.level - pokemonOfGymLeader.level
+        let differenceBetweenLevelOfPokemons = Int(pokemonOfChallenger.level - pokemonOfGymLeader.level)
 
         if (differenceBetweenLevelOfPokemons >= 3) {
             return pokemonOfChallengerWon
