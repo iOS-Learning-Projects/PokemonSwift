@@ -14,7 +14,7 @@ let pokeMundo: PokeMundo
 pokeMundo.iniciarMundo  // Falta o Método
 
 
-var pokemonsIniciais: Array<Any>
+var pokemonsIniciais: Array<Pokemon>
 
 
 for i in 0...3{
@@ -25,7 +25,7 @@ for i in 0...3{
 
 var player: Jogador = Utils.cadastrarJogador(pokemonsIniciais) // Falta Utils
 
-var option
+var option: Int
 
 while(true){
     
@@ -50,7 +50,7 @@ while(true){
         var newPoke: Pokemon
         newPoke = player.procurarPokemons(pokeMundo.pokemons) //Falta Metodo
         if newPoke != nil {                                     //Falta Metodo
-            print("Parabens, você capturou um \(newPoke.nome)")  //Falta Metodo
+            print("Parabens, você capturou um \(newPoke.name)")  //Falta Metodo
             player.addPokemon(newPoke)                  //Falta Metodo
         }else print("Falha na captura")
         break

@@ -15,7 +15,7 @@ class Jogador: NSObject {
     var idJogador: Int = 0
     var nome: String = ""
     var sexo: String = ""
-    var pokemons: Array<Any> = []
+    var pokemons: Array<Pokemon> = []
     
     init(_ currentID: Int, _ currentNome: String,_ currentSex: String, _ firstPokemon: Pokemon) {
         self.idJogador = currentID
@@ -28,30 +28,32 @@ class Jogador: NSObject {
     
     
     
-    func procurarPokemons(_ listaPokemons: Array<Any>) -> Pokemon{
+    func procurarPokemons(_ listaPokemons: Array<Pokemon>) -> Pokemon?{
         
         if self.pokemons.count >= 5{
             return nil
         }
-        
+    
         var op: Int
         
         var pokemon: Pokemon
         
-        pokemon = listaPokemons[arc4random_uniform(UInt32(listaPokemons.count))] // pode ta errado
-        pokemon.exp  = [arc4random_uniform(99)]    //falta variavel no pokemon
+        pokemon = listaPokemons[Int(arc4random_uniform(UInt32(listaPokemons.count)))]
+        pokemon.experience  = arc4random_uniform(99)
         
         repeat{
-            pokemon.level = [arc4random_uniform(15)]
+            pokemon.level = arc4random_uniform(15)
         }while pokemon.level == 0
         
-        print("Voce encontrou um %s.",pokemon.nome);
+        print("Voce encontrou um %s.",pokemon.name);
         print("\n%-20.20s%-20.20s%-20.20s%-20.20s\n","Nome", "Tipo", "Lvl", "Exp");
         print("----------------------------------------------------------------\n");
         
-        
         for pokemon in self.pokemons{
-            print("%-20.20s%-20.20s %-20d %-20d\n", pokemon.nome, pokemon.tipo, pokemon.level, pokemon.exp);
+            
+            
+            
+            print("%-20.20s%-20.20s %-20d %-20d\n", pokemon.name, pokemon.type, pokemon.level, pokemon.experience);
         }
         print("Deseja tentar capturá-lo?\n1 - Sim\n2 - Nao");
         repeat {
@@ -60,7 +62,7 @@ class Jogador: NSObject {
         
         
         if op == 1 {
-            if self.tentarCapturarPokemon{
+            if tentaCapturarPokemon(){
                 return pokemon;
             }
         }
@@ -70,17 +72,18 @@ class Jogador: NSObject {
     
     func tentaCapturarPokemon() -> Bool{
         
-        var chance: Int = [arc4random_uniform(100)]
-        var limite: Int = [50]
+        let chance: Int = Int(arc4random_uniform(100))
+        let limite: Int = 50
         
         return chance >= limite ? true : false
         
     }
     
     func melhoresPokemons(){
-        self.pokemons.sort(by: compare)
+        self.pokemons.sort { (poke1: Pokemon, poke2: Pokemon) -> Bool in
+            poke1.level < poke2.level
+        }
     }
-    
     
     func informacoesJogador(){
         
@@ -91,7 +94,7 @@ class Jogador: NSObject {
         print("\n%-20.20s%-20.20s%-20.20s%-20.20s\n","Nome", "Tipo", "Lvl", "Exp");
         print("----------------------------------------------------------------\n");
         for pokemon in self.pokemons{
-            print("%-20.20s%-20.20s %-20d %-20d\n", pokemon.nome, pokemon.tipo, pokemon.level, pokemon.exp);
+            print("%-20.20s%-20.20s %-20d %-20d\n", pokemon.name, pokemon.type, pokemon.level, pokemon.experience);
         }
         
     }
@@ -99,29 +102,5 @@ class Jogador: NSObject {
     func addPokemon(_ newPoke: Pokemon){
         self.pokemons.append(newPoke)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }
