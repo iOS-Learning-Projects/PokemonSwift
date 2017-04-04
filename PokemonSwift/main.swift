@@ -19,8 +19,7 @@ var pokemonsIniciais: Array<Pokemon>
 
 for i in 0...3{
     
-    pokemonsIniciais.insert(pokeMundo.pokemons, at: i)  //Falta pokemons - PokeMundo metodo
-    
+    pokemonsIniciais.append((pokeMundo.pokemons?[i])!)
 }
 
 var player: Jogador = Utils.cadastrarJogador(pokemonsIniciais: pokemonsIniciais) // Falta Utils
@@ -47,11 +46,9 @@ while(true){
         break
         
     case 4:
-        var newPoke: Pokemon
-        newPoke = player.procurarPokemons(pokeMundo.pokemons) //Falta Metodo
-        if newPoke != nil {                                     //Falta Metodo
-            print("Parabens, você capturou um \(newPoke.name)")  //Falta Metodo
-            player.addPokemon(newPoke)                  //Falta Metodo
+        if let newPokemon = player.procurarPokemons(pokeMundo.pokemons!) {                                     //Falta Metodo
+            print("Parabens, você capturou um \(newPokemon.name)")  //Falta Metodo
+            player.addPokemon(newPokemon)                  //Falta Metodo
         }else{
             print("Falha na captura")
         }
