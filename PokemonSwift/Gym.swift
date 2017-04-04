@@ -23,8 +23,8 @@ struct Gym {
     }
 
     mutating func challengedBy(player challenger: Jogador) {
-        challenger.melhoresPokemons
-        self.leader.melhoresPolemons
+        challenger.melhoresPokemons()
+        self.leader.melhoresPokemons()
 
         var pokemonOfChallenger: Pokemon
         var pokemonOfGymLeader: Pokemon
@@ -32,19 +32,19 @@ struct Gym {
         var leaderGymDefeats = 0
         var challengerDefeats = 0
 
-        for index  in 0...2 {
+        for _ in 0...2 {
             pokemonOfChallenger = challenger.pokemons[challengerDefeats]
             pokemonOfGymLeader = self.leader.pokemons[leaderGymDefeats]
 
             let challengerWonBattle = battleBetween(pokemonOfChallenger: pokemonOfChallenger, andPokemonOfGymLeader: pokemonOfGymLeader)
 
             if challengerWonBattle {
-                challenger.pokemons[challengerDefeats].recebeExp(35)
-                self.leader.pokemons[leaderGymDefeats].receveExp(10)
+                challenger.pokemons[challengerDefeats].gainExperience(35)
+                self.leader.pokemons[leaderGymDefeats].gainExperience(10)
                 leaderGymDefeats += 1
             } else {
-                self.leader.pokemon[challengerDefeats].recebeExp(35)
-                challenger.pokemons[challengerDefeats].recebeExp(10)
+                self.leader.pokemons[challengerDefeats].gainExperience(35)
+                challenger.pokemons[challengerDefeats].gainExperience(10)
                 challengerDefeats += 1
             }
         }
@@ -75,12 +75,14 @@ struct Gym {
             let typeOfPokemonOfChallenger = typesOfPokemons.index(of: pokemonOfChallenger.type)
             let typeOfPokemonOfGymLeader = typesOfPokemons.index(of: pokemonOfGymLeader.type)
 
-            return (typeOfPokemonOfChallenger == typeOfPokemonOfGymLeader + 1) ? pokemonOfChallengerWon : pokemonOfChallengerLost
+            return (typeOfPokemonOfChallenger == typeOfPokemonOfGymLeader! + 1) ? pokemonOfChallengerWon : pokemonOfChallengerLost
         } else {
-            if pokemonOfChallenger.experience > pokemonOfGymLeader.experience
+            if pokemonOfChallenger.experience > pokemonOfGymLeader.experience {
                 return pokemonOfChallengerWon
-            if pokemonOfChallenger.experience < pokemonOfGymLeader.experience
+            }
+            if pokemonOfChallenger.experience < pokemonOfGymLeader.experience {
                 return pokemonOfChallengerLost
+            }
 
             let randomResult = arc4random_uniform(2)
             return (randomResult == 0) ? pokemonOfChallengerLost : pokemonOfChallengerWon
