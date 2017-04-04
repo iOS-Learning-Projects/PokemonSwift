@@ -10,7 +10,7 @@
 		7552A0471E940DCA0094301A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A0461E940DCA0094301A /* main.swift */; };
 		7552A04E1E940E280094301A /* Jogador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A04D1E940E280094301A /* Jogador.swift */; };
 		7552A0501E940E410094301A /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A04F1E940E410094301A /* Pokemon.swift */; };
-		7552A0521E940E530094301A /* Ginasio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A0511E940E530094301A /* Ginasio.swift */; };
+		7552A0521E940E530094301A /* Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A0511E940E530094301A /* Gym.swift */; };
 		7552A0541E940E640094301A /* PokeMundo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A0531E940E640094301A /* PokeMundo.swift */; };
 		7552A0561E940E6F0094301A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7552A0551E940E6F0094301A /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -32,7 +32,7 @@
 		7552A0461E940DCA0094301A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7552A04D1E940E280094301A /* Jogador.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jogador.swift; sourceTree = "<group>"; };
 		7552A04F1E940E410094301A /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
-		7552A0511E940E530094301A /* Ginasio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ginasio.swift; sourceTree = "<group>"; };
+		7552A0511E940E530094301A /* Gym.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gym.swift; sourceTree = "<group>"; };
 		7552A0531E940E640094301A /* PokeMundo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeMundo.swift; sourceTree = "<group>"; };
 		7552A0551E940E6F0094301A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +70,7 @@
 				7552A0461E940DCA0094301A /* main.swift */,
 				7552A04D1E940E280094301A /* Jogador.swift */,
 				7552A04F1E940E410094301A /* Pokemon.swift */,
-				7552A0511E940E530094301A /* Ginasio.swift */,
+				7552A0511E940E530094301A /* Gym.swift */,
 				7552A0531E940E640094301A /* PokeMundo.swift */,
 				7552A0551E940E6F0094301A /* Utils.swift */,
 			);
@@ -139,7 +139,7 @@
 				7552A04E1E940E280094301A /* Jogador.swift in Sources */,
 				7552A0471E940DCA0094301A /* main.swift in Sources */,
 				7552A0541E940E640094301A /* PokeMundo.swift in Sources */,
-				7552A0521E940E530094301A /* Ginasio.swift in Sources */,
+				7552A0521E940E530094301A /* Gym.swift in Sources */,
 				7552A0501E940E410094301A /* Pokemon.swift in Sources */,
 				7552A0561E940E6F0094301A /* Utils.swift in Sources */,
 			);
@@ -275,6 +275,7 @@
 				7552A04C1E940DCA0094301A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

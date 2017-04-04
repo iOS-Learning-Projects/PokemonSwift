@@ -10,9 +10,9 @@ import Cocoa
 
 struct Pokemon {
 
-    var name : NSString;
-    var type : NSString;
-    var experience : UInt32 = 0;
+    var name: NSString;
+    var type: NSString;
+    var experience: UInt32 = 0;
     var level = arc4random_uniform(10) + 2
 
     init(_ name: NSString, ofType type: NSString, withExperience experience: UInt32, andLevel level: UInt32) {
